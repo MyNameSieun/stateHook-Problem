@@ -1,70 +1,216 @@
-# Getting Started with Create React App
+# ex1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```jsx
+import React from "react";
 
-## Available Scripts
+function App() {
+  const students = [
+    { name: "Alice", age: 17, grade: "A" },
+    { name: "Bob", age: 18, grade: "B" },
+    { name: "Charlie", age: 16, grade: "C" },
+    { name: "Diana", age: 19, grade: "D" },
+  ];
 
-In the project directory, you can run:
+  // TODO: filter를 사용하여 18세 이상의 학생들만 선택하세요.
+  const filteredStudents = students.filter(/* 여기에 코드 작성 */);
 
-### `yarn start`
+  return (
+    <div>
+      <h1>학생 목록</h1>
+      <ul>
+        {/* TODO: map을 사용해서 filteredStudents를 여기에 렌더링하세요. */}
+        {/* TODO: 학생이름을 클릭하면 나이와 점수가 alert 돼야 해요.*/}
+      </ul>
+    </div>
+  );
+}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+export default App;
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `yarn test`
+# ex2
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```jsx
+import React, { useState } from "react";
 
-### `yarn build`
+function App() {
+  const students = [
+    { name: "Alice", age: 17, grade: "A" },
+    { name: "Bob", age: 18, grade: "B" },
+    { name: "Charlie", age: 16, grade: "C" },
+    { name: "Diana", age: 19, grade: "D" },
+    { name: "Elmo", age: 20, grade: "E" },
+    { name: "Fiona", age: 21, grade: "F" },
+    { name: "Gabe", age: 22, grade: "A" },
+    { name: "Hannah", age: 23, grade: "B" },
+    { name: "Irene", age: 24, grade: "C" },
+    { name: "Jenny", age: 25, grade: "D" },
+    { name: "Kevin", age: 26, grade: "E" },
+    { name: "Linda", age: 27, grade: "F" },
+  ];
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  const [minAge, setMinAge] = useState(18);
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  // TODO: filter를 사용하여 minAge 이상의 학생들만 선택하세요.
+  const filteredStudents = students.filter((student) => student.age >= minAge);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  // TODO: map을 사용하여 필터링된 학생들의 정보를 표시하세요.
+  const studentList = filteredStudents.map((student, index) => (
+    <li key={index}>
+      {student.name} - Age: {student.age}, Grade: {student.grade}
+    </li>
+  ));
 
-### `yarn eject`
+  return (
+    <div>
+      <h1>학생 목록</h1>
+      다음 나이 이상의 학생목록만 출력해요 : {/* TODO: input에 입력된 값(숫자) 이상의 나이를 가진 학생들만 출력하세요. */}
+      <input type="number" /> 살 이상
+      <ul>{studentList}</ul>
+    </div>
+  );
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+export default App;
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# ex3
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```jsx
+import React, { useState } from "react";
 
-## Learn More
+function App() {
+  const [students, setStudents] = useState([
+    { name: "Alice", age: 17, grade: "A" },
+    { name: "Bob", age: 18, grade: "B" },
+    { name: "Charlie", age: 16, grade: "C" },
+    { name: "Diana", age: 19, grade: "D" },
+    { name: "Elmo", age: 20, grade: "E" },
+    { name: "Fiona", age: 21, grade: "F" },
+    { name: "Gabe", age: 22, grade: "A" },
+    { name: "Hannah", age: 23, grade: "B" },
+    { name: "Irene", age: 24, grade: "C" },
+    { name: "Jenny", age: 25, grade: "D" },
+    { name: "Kevin", age: 26, grade: "E" },
+    { name: "Linda", age: 27, grade: "F" },
+  ]);
+  const [filteredStudents, setFilteredStudents] = useState(students);
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  // TODO: filterByAge 함수를 작성하세요. 이 함수는 최소 나이를 매개변수로 받아 해당 나이 이상인 학생들로 필터링해야 합니다.
+  const filterByAge = (minAge) => {
+    // 여기에 코드를 작성하세요.
+  };
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  // TODO: filterByGrade 함수를 작성하세요. 이 함수는 특정 학점을 매개변수로 받아 해당 학점의 학생들로 필터링해야 합니다.
+  const filterByGrade = (grade) => {
+    // 여기에 코드를 작성하세요.
+  };
 
-### Code Splitting
+  // TODO: resetFilter 함수를 작성하세요. 이 함수는 필터를 초기화하여 모든 학생들을 표시해야 합니다.
+  const resetFilter = () => {
+    // 여기에 코드를 작성하세요.
+  };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  return (
+    <div>
+      <h1>학생 목록</h1>
+      <button onClick={() => filterByAge(24)}>24세 이상</button>
+      <button onClick={() => filterByGrade("A")}>A등급</button>
+      <button onClick={resetFilter}>필터 초기화</button>
+      <ul>
+        {filteredStudents.map((student, index) => (
+          <li key={index}>
+            {student.name} - Age: {student.age}, Grade: {student.grade}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-### Analyzing the Bundle Size
+export default App;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br>
 
-### Making a Progressive Web App
+# ex4
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```jsx
+// App.jsx
+import React, { useState } from "react";
+import FilterButtons from "./components/FilterButtons";
+import StudentList from "./components/StudentList";
 
-### Advanced Configuration
+function App() {
+  const initialStudents = [
+    { name: "Alice", age: 17, grade: "A" },
+    { name: "Bob", age: 18, grade: "B" },
+    { name: "Charlie", age: 16, grade: "C" },
+    { name: "Diana", age: 19, grade: "D" },
+  ];
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  const [filteredStudents, setFilteredStudents] = useState(initialStudents);
 
-### Deployment
+  return (
+    <div>
+      <h1>학생 목록</h1>
+      {/* TODO: FilterButtons 컴포넌트를 작성하고 필요한 props를 전달하세요. */}
+      <FilterButtons
+      /* 필요한 props를 여기에 전달하세요. */
+      />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+      {/* TODO: StudentList 컴포넌트를 작성하고 필요한 props를 전달하세요. */}
+      <StudentList
+      /* 필요한 props를 여기에 전달하세요. */
+      />
+    </div>
+  );
+}
 
-### `yarn build` fails to minify
+export default App;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```jsx
+// componetents/FilterButtons
+import React from "react";
+
+// TODO: FilterButtons 컴포넌트를 작성하세요. 필터링 옵션을 선택하는 버튼들을 포함해야 합니다.
+function FilterButtons(/* 필요한 props를 여기에 전달하세요 */ {}) {
+  const filterByAge = (minAge) => {};
+  const filterByGrade = (grade) => {};
+  const resetFilter = () => {};
+
+  return (
+    <div>
+      {/* 여기에 필터링 버튼들을 완성하세요. */}
+      <button>18세 이상</button>
+      <button>A등급</button>
+      <button>필터 초기화</button>
+    </div>
+  );
+}
+
+export default FilterButtons;
+```
+
+```jsx
+// componetents/StudentList
+
+import React from "react";
+
+// TODO: StudentList 컴포넌트를 작성하세요. props로 학생 목록을 받아와서 표시해야 합니다.
+function StudentList(/* 필요한 props를 여기에 전달하세요 */ {}) {
+  return (
+    <ul>
+      {/* 여기에 학생 목록을 표시하는 로직을 작성하세요. */}
+      {/* ex: 홍길동 (20세) - A등급 */}
+    </ul>
+  );
+}
+
+export default StudentList;
+```
